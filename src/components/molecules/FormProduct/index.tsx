@@ -28,6 +28,9 @@ type FromProductProps = {
 export const FormProduct = (props: FromProductProps) => {
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: props.onImgDrop,
+    accept: {
+      'image/*': ['.jpeg', '.png'],
+    },
   });
 
   return (
@@ -36,7 +39,7 @@ export const FormProduct = (props: FromProductProps) => {
         {...getRootProps()}
         className="p-2 border border-slate-700 rounded-md flex justify-center items-center"
       >
-        <input {...getInputProps({ accept: 'image/*' })} />
+        <input {...getInputProps()} />
         {props.valueImg ? (
           <Image
             src={props.valueImg}
